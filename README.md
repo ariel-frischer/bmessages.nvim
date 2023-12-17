@@ -23,7 +23,7 @@ With lazy.nvim
 }
 ```
 
-### ⚙️A Available Configuration Options
+### ⚙️  Available Configuration Options
 
 - `timer_interval`: Time in milliseconds between each update of the messages buffer (default: 1000).
 - `split_type`: Default split type (`vsplit` or `split`) for the messages buffer (default: "vsplit").
@@ -37,8 +37,8 @@ With lazy.nvim
 ## 🚀 Usage
 
 - `:Bmessages`: Creates a message buffer with the configured options.
-- `:Bmessagesvs`: Creates a message buffer with a vertical split, overriding the `split_type` to 'vsplit'.
-- `:Bmessagessp`: Creates a message buffer with a horizontal split, overriding the `split_type` to 'split'.
+- `:Bmessagesvs`: Creates a message buffer with a vertical split, overriding the `split_type` to `vsplit`.
+- `:Bmessagessp`: Creates a message buffer with a horizontal split, overriding the `split_type` to `split`.
 
 - Run the function directly:
 ```lua
