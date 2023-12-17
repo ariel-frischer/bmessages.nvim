@@ -1,48 +1,126 @@
-local bmodule = require("bmessages.bmodule")
+-- Author: Ariel Frischer
+-- email: arielfrischer@gmail.com
 
-local bmessages = {}
+local M = {}
 
 local function with_defaults(options)
-   return {
-      name = options.name or "John Doe"
-   }
+  options = options or {}
+
+  return {
+    timer_interval = {
+      description = "Time in milliseconds between each update of the messages buffer.",
+      default = options.timer_interval or 1000
+    },
+    split_type = {
+      description = "Default split type for the messages buffer (vsplit or split).",
+      default = options.split_type or "vsplit"
+    },
+    buffer_name = {
+      description = "Name of the messages buffer.",
+      default = options.buffer_name or "messages_buffer"
+    },
+    split_size = {
+      description = "Size of the split when opening the messages buffer. Check :h resize",
+      default = options.split_size or 80
+    },
+    autoscroll = {
+      description = "Automatically scroll to the latest message in the buffer.",
+      default = options.autoscroll ~= nil and options.autoscroll or true
+    },
+    use_timer = {
+      description =
+      "Use a timer to auto-update the messages buffer. If this is false the buffer can be modified, but will not auto-update.",
+      default = options.use_timer ~= nil and options.use_timer or true
+    },
+  }
 end
 
--- This function is supposed to be called explicitly by users to configure this
--- plugin
-function bmessages.setup(options)
-   -- avoid setting global values outside of this function. Global state
-   -- mutations are hard to debug and test, so having them in a single
-   -- function/module makes it easier to reason about all possible changes
-   bmessages.options = with_defaults(options)
+local function update_messages_buffer()
+  local new_messages = vim.api.nvim_exec("messages", true)
+  if new_messages == "" then return nil end
 
-   -- do here any startup your plugin needs, like creating commands and
-   -- mappings that depend on values passed in options
-   vim.api.nvim_create_user_command("MyAwesomePluginGreet", bmessages.greet, {})
+  print('updated!')
+
+  local bufnr = vim.fn.bufnr(M.options.buffer_name.default)
+  local lines = vim.split(new_messages, "\n")
+
+  local current_lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+  if not vim.deep_equal(current_lines, lines) then
+    vim.api.nvim_buf_set_option(bufnr, 'modifiable', true)
+    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+    vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
+
+    if M.options.autoscroll.default and vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) ~= M.options.buffer_name.default then
+      local winnr = vim.fn.bufwinnr(bufnr)
+      if winnr ~= -1 then
+        local winid = vim.fn.win_getid(winnr)
+        vim.api.nvim_win_set_cursor(winid, { #lines, 0 })
+      end
+    end
+  end
 end
 
-function bmessages.is_configured()
-   return bmessages.options ~= nil
+local function create_messages_buffer(options)
+  local cmd = options.split_type.default .. " | enew"
+
+  if options.split_type.default == "vsplit" then
+    cmd = cmd .. " | vertical resize " .. options.split_size.default
+  else
+    cmd = cmd .. " | resize " .. options.split_size.default
+  end
+  -- __AUTO_GENERATED_PRINT_VAR_START__
+  print("create_messages_buffer#if cmd:", vim.inspect(cmd))   -- __AUTO_GENERATED_PRINT_VAR_END__
+
+  vim.cmd(cmd)
+  local bufnr = vim.api.nvim_get_current_buf()
+  vim.api.nvim_buf_set_name(bufnr, options.buffer_name.default)
+  vim.api.nvim_buf_set_option(bufnr, 'buftype', 'nofile')
+  vim.api.nvim_buf_set_option(bufnr, 'bufhidden', 'wipe')
+  vim.api.nvim_buf_set_option(bufnr, 'bl', false)
+  vim.api.nvim_buf_set_option(bufnr, 'swapfile', false)
+
+  update_messages_buffer()
+  if not options.use_timer.default then
+    return nil
+  end
+
+  vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
+  local timer = vim.loop.new_timer()
+  timer:start(options.timer_interval.default, options.timer_interval.default, vim.schedule_wrap(update_messages_buffer))
+
+  vim.api.nvim_create_autocmd({ "BufWipeout", "BufDelete" }, {
+    pattern = options.buffer_name.default,
+    callback = function()
+      if timer then
+        timer:stop()
+        timer:close()
+        timer = nil
+      end
+    end,
+  })
 end
 
--- This is a function that will be used outside this plugin code.
--- Think of it as a public API
-function bmessages.greet()
-   if not bmessages.is_configured() then
-      return
-   end
+-- This function is supposed to be called explicitly by users to configure this plugin
+function M.setup(options)
+  M.options = with_defaults(options)
 
-   -- try to keep all the heavy logic on pure functions/modules that do not
-   -- depend on Neovim APIs. This makes them easy to test
-   local greeting = bmodule.greeting(bmessages.options.name)
-   print(greeting)
+  vim.api.nvim_create_user_command('Bmessages', function()
+    create_messages_buffer(M.options)
+  end, {})
+
+  vim.api.nvim_create_user_command('Bmessagesvs', function()
+    create_messages_buffer(vim.tbl_deep_extend("force", {}, M.options, { split_type = { default = "vsplit" } }))
+  end, {})
+
+  vim.api.nvim_create_user_command('Bmessagessp', function()
+    create_messages_buffer(vim.tbl_deep_extend("force", {}, M.options, { split_type = { default = "split" } }))
+  end, {})
 end
 
--- Another function that belongs to the public API. This one does not depend on
--- user configuration
-function bmessages.generic_greet()
-   print("Hello, unnamed friend!")
+function M.is_configured()
+  return M.options ~= nil
 end
 
-bmessages.options = nil
-return bmessages
+M.options = nil
+return M
