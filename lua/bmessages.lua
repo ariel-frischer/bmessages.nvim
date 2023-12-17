@@ -1,4 +1,4 @@
-local my_cool_module = require("bmessages.my_cool_module")
+local bmodule = require("bmessages.bmodule")
 
 local bmessages = {}
 
@@ -34,7 +34,7 @@ function bmessages.greet()
 
    -- try to keep all the heavy logic on pure functions/modules that do not
    -- depend on Neovim APIs. This makes them easy to test
-   local greeting = my_cool_module.greeting(bmessages.options.name)
+   local greeting = bmodule.greeting(bmessages.options.name)
    print(greeting)
 end
 

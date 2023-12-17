@@ -41,6 +41,10 @@ rename:
 	for file in $$(find ../ -type f -name '*$(CURRENT_NAME)*' ! -path '../.git/*' ! -path './Makefile'); do \
 		mv "$$file" "$$(echo $$file | sed 's/$(CURRENT_NAME)/$(NEW_NAME)/')"; \
 	done
+	# Rename directories, excluding .git and the Makefile's directory
+	for dir in $$(find ../ -type d -name '*$(CURRENT_NAME)*' ! -path '../.git/*' ! -path './'); do \
+		mv "$$dir" "$$(echo $$dir | sed 's/$(CURRENT_NAME)/$(NEW_NAME)/')"; \
+	done
 %:
 	@:
 
