@@ -2,5 +2,6 @@ test/vendor/*/
 
 todo.md
 .luarc.json
+.luacheckrc
 
 .DS_Store
