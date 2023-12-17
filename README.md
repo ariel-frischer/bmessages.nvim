@@ -1,37 +1,39 @@
 # 💬 Bmessages - Better Neovim Messages
 
-Bmessages.nvim is a Neovim plugin designed to improve the default `:messages` functionality. It addresses the limitations of the default window, which is static, non-interactive, and often cumbersome to use. With `:Bmessages`, you get an auto-updating, fully functional buffer that can be used like any other buffer in Neovim.
+[<img src="media/nvim.svg" height="60px" align="right" />](https://neovim.io/)
+
+Bmessages.nvim is a Neovim plugin designed to improve the default `:messages` window. The default window is static, non-interactive, and often cumbersome to use. With `:Bmessages`, you get an auto-updating, fully functional buffer that can be used like any other buffer in Neovim.
 
 ![Preview](https://media.githubusercontent.com/media/ariel-frischer/bmessages.nvim/dev/media/preview.png)
 
 ## prev 1
 
-![Preview](media/preview.mov)
+![Preview](media/preview.mp4)
 
 ## prev 7
 
-https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov
+https://github.com/ariel-frischer/bmessages.nvim/raw/github-main/media/preview.mp4
 
 ## prev 2
 
-<img src="media/preview.mov" width="300" />
+<img src="media/preview.mp4" width="300" />
 
 ## prev 3
 
-<img src="https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov" width="300" />
+<img src="https://github.com/ariel-frischer/bmessages.nvim/raw/github-main/media/preview.mp4" width="300" />
 
 ## prev 4
 
-<video src="https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov" width="300" />
+<video src="https://github.com/ariel-frischer/bmessages.nvim/raw/github-main/media/preview.mp4" width="300" />
 </video>
 
 ## prev 5
 
-![Preview](https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov)
+![Preview](https://github.com/ariel-frischer/bmessages.nvim/raw/github-main/media/preview.mp4)
 
 ## prev 6
 
-[![Alternate Text]({https://media.githubusercontent.com/media/ariel-frischer/bmessages.nvim/dev/media/preview.png})]({https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov} "Link Title")
+[![Alternate Text]({https://media.githubusercontent.com/media/ariel-frischer/bmessages.nvim/dev/media/preview.png})]({https://github.com/ariel-frischer/bmessages.nvim/raw/github-main/media/preview.mp4} "Link Title")
 
 
 
