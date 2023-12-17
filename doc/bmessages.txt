@@ -29,6 +29,15 @@ For `init.lua`: >
 
     require('bmessages').setup {}
 
+For `lazy.nvim`: >
+
+  {
+    "ariel-frischer/bmessages.nvim",
+    event = "CmdlineEnter",
+    opts = {}
+  }
+
+
 ==============================================================================
 3. COMMANDS                                     *bmessages-commands*
 

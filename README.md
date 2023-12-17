@@ -18,7 +18,8 @@ With lazy.nvim
 ```lua
 {
   "ariel-frischer/bmessages.nvim",
-  events = "VeryLazy"
+  event = "CmdlineEnter",
+  opts = {}
 }
 ```
 
