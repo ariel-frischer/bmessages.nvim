@@ -50,28 +50,28 @@ For `init.lua`: >
 The `setup` function accepts a table with the following options:
 
 timer_interval (default: 1000) ~
-    Time in milliseconds between each update of the messages buffer.
+    Time in milliseconds between each update of the bmessages buffer.
 
 split_type (default: "vsplit") ~
-    Default split type for the messages buffer. Valid values are 'vsplit' and
+    Default split type for the bmessages buffer. Valid values are 'vsplit' and
     'split'.
 
-buffer_name (default: "messages_buffer") ~
-    Name of the messages buffer.
+buffer_name (default: "bmessages_buffer") ~
+    Name of the bmessages buffer.
 
 split_size_vsplit (default: nil) ~
-    Size of the vertical split when opening the messages buffer. If nil, the
+    Size of the vertical split when opening the bmessages buffer. If nil, the
     default Neovim behavior is used.
 
 split_size_split (default: nil) ~
-    Size of the horizontal split when opening the messages buffer. If nil, the
+    Size of the horizontal split when opening the bmessages buffer. If nil, the
     default Neovim behavior is used.
 
 autoscroll (default: true) ~
-    Automatically scroll to the latest message in the buffer.
+    Automatically scroll down to the latest message in the buffer.
 
 use_timer (default: true) ~
-    Use a timer to auto-update the messages buffer. If false, the buffer can be
+    Use a timer to auto-update the bmessages buffer. If false, the buffer can be
     modified but will not auto-update.
 
 disable_create_user_commands (default: false) ~

@@ -1,3 +1,4 @@
 test/vendor/*/
 
 todo.md
+.luarc.json
