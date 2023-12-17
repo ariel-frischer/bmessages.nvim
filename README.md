@@ -18,7 +18,7 @@ With lazy.nvim
 ```lua
 {
   "ariel-frischer/bmessages.nvim",
-  cmd = {"Bmessages", "Bmessagesvs", "Bmessagessp"}
+  events = "VeryLazy"
 }
 ```
 
@@ -31,10 +31,21 @@ With lazy.nvim
 - `split_size_split`: Size of the horizontal split (default: nil, uses Neovim's default behavior).
 - `autoscroll`: Automatically scroll to the latest message in the buffer (default: true).
 - `use_timer`: Use a timer to auto-update the messages buffer (default: true).
+- `disable_create_user_commands`: Don't add user commands for `Bmessages`, `Bmessagesvs`, and `Bmessagessp` (default: false).
 
-## 🚀 Commands
+## 🚀 Usage
 
 - `:Bmessages`: Creates a message buffer with the configured options.
 - `:Bmessagesvs`: Creates a message buffer with a vertical split, overriding the `split_type` to 'vsplit'.
 - `:Bmessagessp`: Creates a message buffer with a horizontal split, overriding the `split_type` to 'split'.
 
+- Run the function directly:
+```lua
+require("bmessages").toggle({ split_type = "split" })
+```
+
+## ⌨️  Keymaps
+
+```lua
+vim.api.nvim_set_keymap("n", "<leader>bm", ":Bmessages<CR>", { noremap = true, silent = true })
+```
