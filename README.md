@@ -7,14 +7,13 @@ Bmessages.nvim is a Neovim plugin designed to improve the default `:messages` fu
 Img Tag
 <img src="./media/preview.mov" width="820"/>
 
-Video
-<video src='./media/preview.mov' width="820"/>
+Img Tag2
+<img src="./media/preview.mov" style="width:100%; height: auto; position:absolute; z-index: -1;"/>
 
 Video 2
+
 <video autoplay loop style="width:100%; height: auto; position:absolute; z-index: -1;">
-  <source src="http://syddev.com/jquery.videoBG/assets/tunnel_animation.mp4" type="video/mp4" />
-  <source src="http://syddev.com/jquery.videoBG/assets/tunnel_animation.ogv" type="application/ogg" />
-  <img src="http://syddev.com/jquery.videoBG/assets/tunnel_animation.jpg">
+  <source src="./media/preview.mov" type="video/mov" />
 </video>
 
 ## ✨ Features
