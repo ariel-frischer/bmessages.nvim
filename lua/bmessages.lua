@@ -19,9 +19,13 @@ local function with_defaults(options)
       description = "Name of the messages buffer.",
       default = options.buffer_name or "messages_buffer"
     },
-    split_size = {
-      description = "Size of the split when opening the messages buffer. Check :h resize",
-      default = options.split_size or 80
+    split_size_vsplit = {
+      description = "Size of the vertical split when opening the messages buffer. Check :h resize",
+      default = options.split_size_vsplit or nil
+    },
+    split_size_split = {
+      description = "Size of the horizontal split when opening the messages buffer. Check :h resize",
+      default = options.split_size_split or nil
     },
     autoscroll = {
       description = "Automatically scroll to the latest message in the buffer.",
@@ -39,9 +43,10 @@ local function update_messages_buffer()
   local new_messages = vim.api.nvim_exec("messages", true)
   if new_messages == "" then return nil end
 
-  print('updated!')
+  -- print('updated!')
 
   local bufnr = vim.fn.bufnr(M.options.buffer_name.default)
+  if not vim.api.nvim_buf_is_valid(bufnr) then return end
   local lines = vim.split(new_messages, "\n")
 
   local current_lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
@@ -62,17 +67,16 @@ local function update_messages_buffer()
 end
 
 local function create_messages_buffer(options)
-  local cmd = options.split_type.default .. " | enew"
+  local cmd = options.split_type.default
 
-  if options.split_type.default == "vsplit" then
-    cmd = cmd .. " | vertical resize " .. options.split_size.default
-  else
-    cmd = cmd .. " | resize " .. options.split_size.default
+  if cmd == "vsplit" and options.split_size_vsplit.default ~= nil then
+    cmd = cmd .. " | vertical resize " .. options.split_size_vsplit.default
+  elseif cmd == "split" and options.split_size_split.default ~= nil then
+    cmd = cmd .. " | resize " .. options.split_size_split.default
   end
-  -- __AUTO_GENERATED_PRINT_VAR_START__
-  print("create_messages_buffer#if cmd:", vim.inspect(cmd))   -- __AUTO_GENERATED_PRINT_VAR_END__
 
-  vim.cmd(cmd)
+  vim.cmd(cmd .. " | enew")
+
   local bufnr = vim.api.nvim_get_current_buf()
   vim.api.nvim_buf_set_name(bufnr, options.buffer_name.default)
   vim.api.nvim_buf_set_option(bufnr, 'buftype', 'nofile')
@@ -118,9 +122,9 @@ function M.setup(options)
   end, {})
 end
 
-function M.is_configured()
-  return M.options ~= nil
-end
+-- function M.is_configured()
+--   return M.options ~= nil
+-- end
 
 M.options = nil
 return M
