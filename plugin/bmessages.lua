@@ -14,8 +14,3 @@ vim.g.loaded_bmessages = 1
 -- Be careful to not overuse this file!
 local bmessages = require("bmessages")
 
-vim.api.nvim_create_user_command(
-  "MyAwesomePluginGenericGreet",
-  bmessages.generic_greet,
-  {})
-
