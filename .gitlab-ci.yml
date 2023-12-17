@@ -10,7 +10,7 @@ test:
     LUAROCKS_VERSION: "2.4.2" # Adjust the version as per your requirements
 
   script:
-    - apt-get update && apt-get install -y wget unzip make git
+    - apt-get update && apt-get install -y wget unzip make git gcc libreadline-dev libncurses-dev
     - wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
     - tar xzvf nvim-linux64.tar.gz
     - export PATH="$(pwd)/nvim-linux64/bin:$PATH"
