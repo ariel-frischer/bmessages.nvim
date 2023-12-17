@@ -4,7 +4,9 @@ Bmessages.nvim is a Neovim plugin designed to improve the default `:messages` fu
 
 ![Preview](./media/preview.mov)
 
-<img src="./media/preview.mov" width="200">
+<img src="./media/preview.mov" width="800">
+
+<video src='./media/preview.mov' width=800/>
 
 ## ✨ Features
 
