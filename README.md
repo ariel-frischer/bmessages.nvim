@@ -25,14 +25,34 @@ With lazy.nvim
 
 ### ⚙️  Available Configuration Options
 
-- `timer_interval`: Time in milliseconds between each update of the messages buffer (default: 1000).
-- `split_type`: Default split type (`vsplit` or `split`) for the messages buffer (default: "vsplit").
-- `buffer_name`: Name of the messages buffer (default: "messages_buffer").
-- `split_size_vsplit`: Size of the vertical split (default: nil, uses Neovim's default behavior).
-- `split_size_split`: Size of the horizontal split (default: nil, uses Neovim's default behavior).
-- `autoscroll`: Automatically scroll to the latest message in the buffer (default: true).
-- `use_timer`: Use a timer to auto-update the messages buffer (default: true).
-- `disable_create_user_commands`: Don't add user commands for `Bmessages`, `Bmessagesvs`, and `Bmessagessp` (default: false).
+```lua
+local opts = {
+  -- Time in milliseconds between each update of the messages buffer.
+  timer_interval = 1000,
+
+  -- Default split type for the messages buffer ('vsplit' or 'split').
+  split_type = "vsplit",
+
+  -- Size of the vertical split when opening the messages buffer.
+  split_size_vsplit = nil,
+
+  -- Size of the horizontal split when opening the messages buffer.
+  split_size_split = nil,
+
+  -- Automatically scroll to the latest message in the buffer.
+  autoscroll = true,
+
+  -- Use a timer to auto-update the messages buffer. When this is disabled,
+  -- the buffer will not update, but the buffer becomes modifiable.
+  use_timer = true,
+
+  -- Name of the messages buffer.
+  buffer_name = "bmessages_buffer",
+
+  -- Don't add user commands for `Bmessages`, `Bmessagesvs`, and `Bmessagessp`.
+  disable_create_user_commands = false,
+}
+```
 
 ## 🚀 Usage
 
