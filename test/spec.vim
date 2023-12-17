@@ -8,5 +8,5 @@ lua require('plenary.busted')
 lua require('matcher_combinators.luassert')
 
 " configuring the plugin
-runtime plugin/my_awesome_plugin.lua
-lua require('my_awesome_plugin').setup({ name = 'Jane Doe' })
+runtime plugin/bmessages.lua
+lua require('bmessages').setup({ name = 'Jane Doe' })

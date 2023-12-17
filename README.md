@@ -6,7 +6,7 @@ A template to create Neovim plugins written in [Lua][lua].
 
 ## Using
 
-Clone/download it locally and change the references to `my_awesome_plugin`, 
+Clone/download it locally and change the references to `bmessages`, 
 `my_cool_module` accordingly to your new plugin name. Don't forget to edit the
 [help][help] file accordingly.
 
@@ -44,8 +44,8 @@ $ make watch
 In both commands you myght specify a single spec to test/watch using:
 
 ```bash
-$ make test SPEC=spec/my_awesome_plugin/my_cool_module_spec.lua
-$ make watch SPEC=spec/my_awesome_plugin/my_cool_module_spec.lua
+$ make test SPEC=spec/bmessages/my_cool_module_spec.lua
+$ make watch SPEC=spec/bmessages/my_cool_module_spec.lua
 ```
 
 ## Github actions

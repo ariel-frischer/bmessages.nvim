@@ -1,4 +1,4 @@
-local my_cool_module = require('my_awesome_plugin.my_cool_module')
+local my_cool_module = require('bmessages.my_cool_module')
 
 describe("greeting", function()
    it('works!', function()
