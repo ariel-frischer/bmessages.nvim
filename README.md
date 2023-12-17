@@ -4,6 +4,26 @@ Bmessages.nvim is a Neovim plugin designed to improve the default `:messages` fu
 
 ![Preview](https://media.githubusercontent.com/media/ariel-frischer/bmessages.nvim/dev/media/preview.png)
 
+## prev 1
+
+![Preview](media/preview.mov)
+
+## prev 2
+
+<img src="media/preview.mov" width="300" />
+
+## prev 3
+
+<img src="https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov" width="300" />
+
+## prev 4
+
+<video src="https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov" width="300" />
+
+## prev 5
+
+![Preview](https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov)
+
 ## ✨ Features
 
 - **Auto-updating Buffers**: `bmessages` automatically updates the messages buffer, ensuring you always have the latest log messages at your fingertips.
