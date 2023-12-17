@@ -26,13 +26,14 @@ test:
     - cd luarocks-$LUAROCKS_VERSION
     - ./configure && make && make install
     - cd ..
-    # Install dependencies
+    # Install Lua dependencies
+    - luarocks install luacheck
+    # Install other dependencies
     - make -C ./test prepare
     # Run linter
     - luacheck lua/ test/spec/
     # Run tests
     - make -C ./test test
-
   only:
     - main
     - dev
