@@ -1,0 +1,40 @@
+
+stages:
+  - test
+
+test:
+  stage: test
+  image: ubuntu:latest
+  variables:
+    LUA_VERSION: "5.1.5"
+    LUAROCKS_VERSION: "2.4.2" # Adjust the version as per your requirements
+
+  script:
+    - apt-get update && apt-get install -y wget unzip make git
+    - wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
+    - tar xzvf nvim-linux64.tar.gz
+    - export PATH="$(pwd)/nvim-linux64/bin:$PATH"
+    # Install specific Lua version and Luarocks
+    - wget https://www.lua.org/ftp/lua-$LUA_VERSION.tar.gz
+    - tar zxf lua-$LUA_VERSION.tar.gz
+    - cd lua-$LUA_VERSION
+    - make linux test
+    - sudo make install
+    - cd ..
+    - wget https://luarocks.org/releases/luarocks-$LUAROCKS_VERSION.tar.gz
+    - tar zxpf luarocks-$LUAROCKS_VERSION.tar.gz
+    - cd luarocks-$LUAROCKS_VERSION
+    - ./configure && make && sudo make install
+    - cd ..
+    # Install dependencies
+    - make -C ./test prepare
+    # Run linter
+    - luacheck lua/ test/spec/
+    # Run tests
+    - make -C ./test test
+
+  only:
+    - main
+    - alpha
+  except:
+    - tags
