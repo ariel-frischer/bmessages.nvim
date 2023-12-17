@@ -4,6 +4,8 @@ Bmessages.nvim is a Neovim plugin designed to improve the default `:messages` fu
 
 ![Preview](./media/preview.mov)
 
+<img src="./media/preview.mov" width="200">
+
 ## ✨ Features
 
 - **Auto-updating Buffers**: `bmessages` automatically updates the messages buffer, ensuring you always have the latest log messages at your fingertips.
