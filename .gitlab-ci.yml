@@ -19,12 +19,12 @@ test:
     - tar zxf lua-$LUA_VERSION.tar.gz
     - cd lua-$LUA_VERSION
     - make linux test
-    - sudo make install
+    - make install
     - cd ..
     - wget https://luarocks.org/releases/luarocks-$LUAROCKS_VERSION.tar.gz
     - tar zxpf luarocks-$LUAROCKS_VERSION.tar.gz
     - cd luarocks-$LUAROCKS_VERSION
-    - ./configure && make && sudo make install
+    - ./configure && make && make install
     - cd ..
     # Install dependencies
     - make -C ./test prepare
