@@ -36,7 +36,7 @@ test:
     - make -C ./test test
   only:
     - main
-    - dev
+    # - dev
     - alpha
   except:
     - tags
