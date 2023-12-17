@@ -1,21 +1,21 @@
 if vim.fn.has("nvim-0.7.0") == 0 then
-  vim.api.nvim_err_writeln("my_awesome_plugin requires at least nvim-0.7.0.1")
+  vim.api.nvim_err_writeln("bmessages requires at least nvim-0.7.0.1")
   return
 end
 
 -- make sure this file is loaded only once
-if vim.g.loaded_my_awesome_plugin == 1 then
+if vim.g.loaded_bmessages == 1 then
   return
 end
-vim.g.loaded_my_awesome_plugin = 1
+vim.g.loaded_bmessages = 1
 
 -- create any global command that does not depend on user setup
 -- usually it is better to define most commands/mappings in the setup function
 -- Be careful to not overuse this file!
-local my_awesome_plugin = require("my_awesome_plugin")
+local bmessages = require("bmessages")
 
 vim.api.nvim_create_user_command(
   "MyAwesomePluginGenericGreet",
-  my_awesome_plugin.generic_greet,
+  bmessages.generic_greet,
   {})
 
