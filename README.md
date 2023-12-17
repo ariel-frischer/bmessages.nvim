@@ -8,6 +8,10 @@ Bmessages.nvim is a Neovim plugin designed to improve the default `:messages` fu
 
 ![Preview](media/preview.mov)
 
+## prev 7
+
+https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov
+
 ## prev 2
 
 <img src="media/preview.mov" width="300" />
@@ -19,10 +23,18 @@ Bmessages.nvim is a Neovim plugin designed to improve the default `:messages` fu
 ## prev 4
 
 <video src="https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov" width="300" />
+</video>
 
 ## prev 5
 
 ![Preview](https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov)
+
+## prev 6
+
+[![Alternate Text]({https://media.githubusercontent.com/media/ariel-frischer/bmessages.nvim/dev/media/preview.png})]({https://github.com/ariel-frischer/bmessages.nvim/raw/main/media/preview.mov} "Link Title")
+
+
+
 
 ## ✨ Features
 
