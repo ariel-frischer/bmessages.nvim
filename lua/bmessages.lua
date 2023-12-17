@@ -34,7 +34,6 @@ end
 
 local function update_messages_buffer(options)
   return function()
-    print('updated')
     local new_messages = vim.api.nvim_exec("messages", true)
     if new_messages == "" then return end
 
@@ -52,8 +51,6 @@ local function update_messages_buffer(options)
       vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
     end
 
-    -- __AUTO_GENERATED_PRINT_VAR_START__
-    print("update_messages_buffer#function#if autoscroll:", vim.inspect(options.autoscroll)) -- __AUTO_GENERATED_PRINT_VAR_END__
     if options.autoscroll and vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) ~= options.buffer_name then
       local winnr = vim.fn.bufwinnr(bufnr)
       if winnr ~= -1 then
@@ -95,8 +92,6 @@ end
 
 local function create_messages_buffer(new_options)
   local options = merge_options(M.options, new_options)
-  -- __AUTO_GENERATED_PRINT_VAR_START__
-  vim.print("create_messages_buffer options:", options) -- __AUTO_GENERATED_PRINT_VAR_END__
 
   if is_bmessages_buffer_open(options) then
     if M.current_split_type == options.split_type then
@@ -127,7 +122,7 @@ local function create_messages_buffer(new_options)
     return nil
   end
 
-  if options.use_timer then
+  if options.use_timer and timer then
     timer:start(options.timer_interval, options.timer_interval, vim.schedule_wrap(update_fn))
   end
 
