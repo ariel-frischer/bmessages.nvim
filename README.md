@@ -1,72 +1,40 @@
-# plugin-template.nvim
+# 💬 Bmessages - Better Neovim Messages
 
-[![Integration][integration-badge]][integration-runs]
+`bmessages` is a Neovim plugin designed to significantly improve the developer experience by enhancing the default `:messages` functionality. It addresses the limitations of the default message window, which is static, non-interactive, and often cumbersome to use. With `:Bmessages`, you get an auto-updating, fully functional buffer that can be used like any other buffer in Neovim.
 
-A template to create Neovim plugins written in [Lua][lua].
+## ✨ Features
 
-## Using
+- **Auto-updating Buffers**: `bmessages` automatically updates the messages buffer, ensuring you always have the latest log messages at your fingertips.
+- **Customizable Split Types**: Choose between horizontal (`split`) and vertical (`vsplit`) split types for displaying the messages buffer.
+- **Resizable Splits**: Easily configure the size of the message buffer split, both for vertical and horizontal layouts.
+- **Improved Usability**: The buffer behaves like any standard Neovim buffer, allowing for easier navigation and interaction.
+- **Autoscroll Option**: Automatically scroll to the latest message, ensuring you're always viewing the most recent logs.
 
-Clone/download it locally and change the references to `bmessages`, 
-`bmodule` accordingly to your new plugin name. Don't forget to edit the
-[help][help] file accordingly.
+## 📦 Installation
 
-To automate renaming of references of all files, directories, and contents you can simply run:
-```bash
-make rename old_name new_name
+Add `bmessages` to your Neovim configuration using your preferred package manager.
+
+With lazy.nvim
+```lua
+{
+  "ariel-frischer/bmessages.nvim",
+  cmd = {"Bmessages", "Bmessagesvs", "Bmessagessp"}
+}
 ```
 
-You'll need to install [Lua][lua] and [LuaRocks][luarocks] to run the linter.
+### ⚙️A Available Configuration Options
 
-## Testing
+- `timer_interval`: Time in milliseconds between each update of the messages buffer (default: 1000).
+- `split_type`: Default split type (`vsplit` or `split`) for the messages buffer (default: "vsplit").
+- `buffer_name`: Name of the messages buffer (default: "messages_buffer").
+- `split_size_vsplit`: Size of the vertical split (default: nil, uses Neovim's default behavior).
+- `split_size_split`: Size of the horizontal split (default: nil, uses Neovim's default behavior).
+- `autoscroll`: Automatically scroll to the latest message in the buffer (default: true).
+- `use_timer`: Use a timer to auto-update the messages buffer (default: true).
 
-This uses [busted][busted], [luassert][luassert] (both through
-[plenary.nvim][plenary]) and [matcher_combinators][matcher_combinators] to
-define tests in `test/spec/` directory. These dependencies are required only to
-run tests, that's why they are installed as git submodules.
+## 🚀 Commands
 
-Make sure your shell is in the `./test` directory or, if it is in the root directory,
-replace `make` by `make -C ./test` in the commands below.
+- `:Bmessages`: Creates a message buffer with the configured options.
+- `:Bmessagesvs`: Creates a message buffer with a vertical split, overriding the `split_type` to 'vsplit'.
+- `:Bmessagessp`: Creates a message buffer with a horizontal split, overriding the `split_type` to 'split'.
 
-To init the dependencies run
-
-```bash
-make prepare
-```
-
-To run all tests just execute
-
-```bash
-make test
-```
-
-If you have [entr(1)][entr] installed you may use it to run all tests whenever a
-file is changed using:
-
-```bash
-make watch
-```
-
-In both commands you myght specify a single spec to test/watch using:
-
-```bash
-make test SPEC=spec/bmessages/bmodule_spec.lua
-make watch SPEC=spec/bmessages/bmodule_spec.lua
-```
-
-## Github actions
-
-An Action will run all the tests and the linter on every commit on the main
-branch and also on Pull Request. Tests will be run using 
-[stable and nightly][neovim-test-versions] versions of Neovim.
-
-[lua]: https://www.lua.org/
-[entr]: https://eradman.com/entrproject/
-[luarocks]: https://luarocks.org/
-[busted]: https://olivinelabs.com/busted/
-[luassert]: https://github.com/Olivine-Labs/luassert
-[plenary]: https://github.com/nvim-lua/plenary.nvim
-[matcher_combinators]: https://github.com/m00qek/matcher_combinators.lua
-[integration-badge]: https://github.com/m00qek/plugin-template.nvim/actions/workflows/integration.yml/badge.svg
-[integration-runs]: https://github.com/m00qek/plugin-template.nvim/actions/workflows/integration.yml
-[neovim-test-versions]: .github/workflows/integration.yml#L17
-[help]: doc/my-awesome-plugin.txt
