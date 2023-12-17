@@ -6,7 +6,7 @@
 
 ## ✨ Features
 
-- **Auto-updating Buffers**: `bmessages` automatically updates the messages buffer, ensuring you always have the latest log messages at your fingertips.
+- **Auto-updating Buffers**: `:Bmessages` automatically updates the messages buffer, ensuring you always have the latest log messages at your fingertips.
 - **Customizable Split Types**: Choose between horizontal (`split`) and vertical (`vsplit`) split types for displaying the messages buffer.
 - **Resizable Splits**: Easily configure the size of the message buffer split, both for vertical and horizontal layouts.
 - **Improved Usability**: The buffer behaves like any standard Neovim buffer, allowing for easier navigation and interaction.
@@ -58,16 +58,27 @@ local opts = {
 
 ## 🚀 Usage
 
-- `:Bmessages`: Creates a message buffer with the configured options.
-- `:Bmessagesvs`: Creates a message buffer with a vertical split, overriding the `split_type` to `vsplit`.
-- `:Bmessagessp`: Creates a message buffer with a horizontal split, overriding the `split_type` to `split`.
+### `:Bmessages`
 
-- Run the function directly:
+Creates a message buffer with the configured options.
+
+### `:Bmessagesvs`
+
+Creates a message buffer with a vertical split, overriding the `split_type` to `vsplit`.
+
+### `:Bmessagessp`
+
+Creates a message buffer with a horizontal split, overriding the `split_type` to `split`.
+
+### Lua API
+
 ```lua
 require("bmessages").toggle({ split_type = "split" })
 ```
 
 ## ⌨️  Keymaps
+
+No keymaps are set by default, but you can easily set your own keymaps to open the messages buffer.
 
 ```lua
 vim.api.nvim_set_keymap("n", "<leader>bm", ":Bmessages<CR>", { noremap = true, silent = true })
