@@ -2,3 +2,5 @@ test/vendor/*/
 
 todo.md
 .luarc.json
+
+.DS_Store
