@@ -10,6 +10,11 @@ Clone/download it locally and change the references to `bmessages`,
 `bmodule` accordingly to your new plugin name. Don't forget to edit the
 [help][help] file accordingly.
 
+To automate renaming of references of all files, directories, and contents you can simply run:
+```bash
+make rename old_name new_name
+```
+
 You'll need to install [Lua][lua] and [LuaRocks][luarocks] to run the linter.
 
 ## Testing
@@ -25,27 +30,27 @@ replace `make` by `make -C ./test` in the commands below.
 To init the dependencies run
 
 ```bash
-$ make prepare
+make prepare
 ```
 
 To run all tests just execute
 
 ```bash
-$ make test
+make test
 ```
 
 If you have [entr(1)][entr] installed you may use it to run all tests whenever a
 file is changed using:
 
 ```bash
-$ make watch
+make watch
 ```
 
 In both commands you myght specify a single spec to test/watch using:
 
 ```bash
-$ make test SPEC=spec/bmessages/bmodule_spec.lua
-$ make watch SPEC=spec/bmessages/bmodule_spec.lua
+make test SPEC=spec/bmessages/bmodule_spec.lua
+make watch SPEC=spec/bmessages/bmodule_spec.lua
 ```
 
 ## Github actions
