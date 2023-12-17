@@ -35,6 +35,7 @@ test:
 
   only:
     - main
+    - dev
     - alpha
   except:
     - tags
