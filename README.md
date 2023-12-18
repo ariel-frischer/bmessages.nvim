@@ -4,6 +4,13 @@
 
 ![Preview](https://media.githubusercontent.com/media/ariel-frischer/bmessages.nvim/dev/media/preview.png)
 
+## Test Preview
+
+
+https://github.com/ariel-frischer/bmessages.nvim/assets/19893395/6ec66a27-865a-48c8-ab0c-b6bba10fdc3e
+
+
+
 ## ✨ Features
 
 - **Auto-updating Buffers**: `bmessages` automatically updates the messages buffer, ensuring you always have the latest log messages at your fingertips.
