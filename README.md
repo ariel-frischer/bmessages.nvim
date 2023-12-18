@@ -2,7 +2,7 @@
 
 # 💬 Bmessages - Better Neovim Messages
 
-https://github.com/ariel-frischer/bmessages.nvim/assets/19893395/6ec66a27-865a-48c8-ab0c-b6bba10fdc3e
+https://github.com/ariel-frischer/bmessages.nvim/assets/19893395/10ae410d-7d0d-4568-9c27-dc7ca6f89137
 
 
 ## ✨ Features
