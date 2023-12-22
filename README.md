@@ -16,7 +16,10 @@ https://github.com/ariel-frischer/bmessages.nvim/assets/19893395/10ae410d-7d0d-4
 
 Add `bmessages` to your Neovim configuration using your preferred package manager.
 
-With lazy.nvim
+#### With [lazy.nvim](https://github.com/folke/lazy.nvim)
+<details open>
+<summary>Click to expand/collapse</summary>
+
 ```lua
 {
   "ariel-frischer/bmessages.nvim",
@@ -24,6 +27,54 @@ With lazy.nvim
   opts = {}
 }
 ```
+</details>
+
+#### With [packer.nvim](https://github.com/wbthomason/packer.nvim)
+<details>
+<summary>Click to expand/collapse</summary>
+
+```lua
+use({
+  "ariel-frischer/bmessages.nvim",
+    config = function()
+      require("bmessages").setup({
+        -- config here or empty for defaults
+      })
+    end,
+  })
+```
+
+</details>
+
+#### With [vim-plug](https://github.com/junegunn/vim-plug)
+
+<details>
+<summary>Click to expand/collapse</summary>
+
+```vim
+Plug 'ariel-frischer/bmessages.nvim'
+" ... other plugins...
+" after plug#end()
+" provide `setup()` configuration options or leave empty for defaults
+lua require('bmessages').setup()
+```
+</details>
+
+#### With [pckr.nvim](https://github.com/lewis6991/pckr.nvim)
+
+<details>
+<summary>Click to expand/collapse</summary>
+
+```lua
+{ "ariel-frischer/bmessages.nvim",
+  config = function()
+    require("bmessages").setup({
+      -- config here or empty for defaults
+    })
+  end,
+};
+```
+</details>
 
 ### ⚙️  Available Configuration Options
 
