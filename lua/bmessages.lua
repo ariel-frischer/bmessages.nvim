@@ -45,11 +45,6 @@ local function update_messages_buffer(options)
 		end
 
 		local lines = vim.split(new_messages, "\n")
-		local current_lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-
-		if vim.deep_equal(current_lines, lines) then
-			return
-		end
 
 		vim.api.nvim_buf_set_option(bufnr, "modifiable", true)
 		vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
