@@ -34,7 +34,7 @@ end
 
 local function update_messages_buffer(options)
 	return function()
-		local new_messages = vim.api.nvim_exec("messages", true)
+		local new_messages = vim.api.nvim_cmd({ cmd = "messages" }, { output = true })
 		if new_messages == "" then
 			return
 		end
@@ -46,10 +46,10 @@ local function update_messages_buffer(options)
 
 		local lines = vim.split(new_messages, "\n")
 
-		vim.api.nvim_buf_set_option(bufnr, "modifiable", true)
+		vim.api.nvim_set_option_value("modifiable", true, { buf = bufnr })
 		vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
 		if options.use_timer then
-			vim.api.nvim_buf_set_option(bufnr, "modifiable", false)
+			vim.api.nvim_set_option_value("modifiable", false, { buf = bufnr })
 		end
 
 		if options.autoscroll and vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) ~= options.buffer_name then
@@ -72,10 +72,10 @@ end
 local function create_raw_buffer(options)
 	local bufnr = vim.api.nvim_get_current_buf()
 	vim.api.nvim_buf_set_name(bufnr, options.buffer_name)
-	vim.api.nvim_buf_set_option(bufnr, "buftype", "nofile")
-	vim.api.nvim_buf_set_option(bufnr, "bufhidden", "wipe")
-	vim.api.nvim_buf_set_option(bufnr, "bl", false)
-	vim.api.nvim_buf_set_option(bufnr, "swapfile", false)
+	vim.api.nvim_set_option_value("buftype", "nofile", { buf = bufnr })
+	vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = bufnr })
+	vim.api.nvim_set_option_value("bl", false, { buf = bufnr })
+	vim.api.nvim_set_option_value("swapfile", false, { buf = bufnr })
 end
 
 local function run_vim_cmd(options)
