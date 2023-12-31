@@ -157,6 +157,10 @@ function M.setup(options)
 	vim.api.nvim_create_user_command("Bmessagessp", function()
 		create_messages_buffer(vim.tbl_deep_extend("force", {}, M.options, { split_type = "split" }))
 	end, {})
+
+	vim.api.nvim_create_user_command("BmessagesEdit", function()
+		create_messages_buffer(vim.tbl_deep_extend("force", {}, M.options, { use_timer = false }))
+	end, {})
 end
 
 function M.is_configured()

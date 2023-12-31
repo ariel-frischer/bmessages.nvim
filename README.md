@@ -115,6 +115,10 @@ Creates a message buffer with a vertical split, overriding the `split_type` to `
 
 Creates a message buffer with a horizontal split, overriding the `split_type` to `split`.
 
+### `:BmessagesEdit`
+
+Creates a editable message buffer with the configured options without auto updating.
+
 ### Lua API
 
 ```lua
