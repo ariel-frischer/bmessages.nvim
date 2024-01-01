@@ -1,11 +1,11 @@
 if vim.fn.has("nvim-0.7.0") == 0 then
-  vim.api.nvim_err_writeln("bmessages requires at least nvim-0.7.0.1")
-  return
+	vim.api.nvim_err_writeln("bmessages requires at least nvim-0.7.0.1")
+	return
 end
 
 -- make sure this file is loaded only once
 if vim.g.loaded_bmessages == 1 then
-  return
+	return
 end
 vim.g.loaded_bmessages = 1
 
@@ -13,4 +13,3 @@ vim.g.loaded_bmessages = 1
 -- usually it is better to define most commands/mappings in the setup function
 -- Be careful to not overuse this file!
 local bmessages = require("bmessages")
-
