@@ -53,6 +53,10 @@ For `lazy.nvim`: >
     Creates a message buffer with a horizontal split. Overrides the split_type
     to 'split'.
 
+:BmessagesEdit                                     *:BmessageEdit*
+    Creates an editable message buffer with the configured options without
+    auto updating.
+
 ==============================================================================
 4. CONFIGURATION OPTIONS                        *bmessages-configuration*
 
