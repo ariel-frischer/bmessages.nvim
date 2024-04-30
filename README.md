@@ -85,6 +85,8 @@ local opts = {
   timer_interval = 1000,
   -- Default split type for the messages buffer ('vsplit' or 'split').
   split_type = "vsplit",
+  -- Default split direction for the messages buffer ('topleft' or 'botright').
+  split_direction = nil,
   -- Size of the vertical split when opening the messages buffer.
   split_size_vsplit = nil,
   -- Size of the horizontal split when opening the messages buffer.

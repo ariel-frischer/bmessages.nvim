@@ -69,6 +69,10 @@ split_type (default: "vsplit") ~
     Default split type for the bmessages buffer. Valid values are 'vsplit' and
     'split'.
 
+split_direction (default: nil) ~
+    Default split direction for the bmessages buffer. Valid values are 'topleft' and
+    'botright'.
+
 buffer_name (default: "bmessages_buffer") ~
     Name of the bmessages buffer.
 

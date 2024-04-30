@@ -10,6 +10,7 @@ local function with_defaults(options)
 	local defaults = {
 		timer_interval = 1000,
 		split_type = "vsplit",
+		split_direction = nil,
 		buffer_name = "bmessages_buffer",
 		split_size_vsplit = nil,
 		split_size_split = nil,
@@ -90,6 +91,10 @@ local function run_vim_cmd(options)
 		cmd = cmd .. " | vertical resize " .. options.split_size_vsplit
 	elseif cmd == "split" and options.split_size_split ~= nil then
 		cmd = cmd .. " | resize " .. options.split_size_split
+	end
+
+	if options.split_direction ~= nil then
+		cmd = options.split_direction .. " " .. cmd
 	end
 
 	vim.cmd(cmd .. " | enew")
