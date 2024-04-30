@@ -98,6 +98,8 @@ local opts = {
   buffer_name = "bmessages_buffer",
   -- Don't add user commands for `Bmessages`, `Bmessagesvs`, and `Bmessagessp`.
   disable_create_user_commands = false,
+  -- Don't focus the bmessages window after opening.
+  keep_focus = false,
 }
 ```
 
