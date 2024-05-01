@@ -16,6 +16,7 @@ local function with_defaults(options)
 		autoscroll = true,
 		use_timer = true,
 		disable_create_user_commands = false,
+		keep_focus = false,
 	}
 
 	for key, default_value in pairs(defaults) do
@@ -109,8 +110,12 @@ local function create_messages_buffer(new_options)
 
 	M.current_split_type = options.split_type
 
+	local orig_win = options.keep_focus and vim.api.nvim_get_current_win()
+
 	run_vim_cmd(options)
 	create_raw_buffer(options)
+
+	if orig_win then vim.api.nvim_set_current_win(orig_win) end
 
 	local update_fn = update_messages_buffer(options)
 	update_fn()
