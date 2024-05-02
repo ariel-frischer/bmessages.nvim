@@ -9,7 +9,6 @@ on:
 jobs:
   test:
     name: Tests
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -19,6 +18,20 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
+    - name: Create .gitmodules
+      run: |
+        echo "[submodule \"test/vendor/matcher_combinators.lua\"]" >> .gitmodules
+        echo "path = test/vendor/matcher_combinators.lua" >> .gitmodules
+        echo "url = https://github.com/m00qek/matcher_combinators.lua.git" >> .gitmodules
+        echo "[submodule \"test/vendor/plenary.nvim\"]" >> .gitmodules
+        echo "path = test/vendor/plenary.nvim" >> .gitmodules
+        echo "url = https://github.com/nvim-lua/plenary.nvim.git" >> .gitmodules
+
+    - name: Init submodules
+      run: |
+        git submodule init
+        git submodule update
 
     - uses: rhysd/action-setup-vim@v1
       with:
@@ -34,8 +47,7 @@ jobs:
       uses: leafo/gh-actions-luarocks@v4
 
     - name: Install dependencies
-      run: |
-        make -C ./test prepare
+      run: make -C ./test prepare
 
     - name: Run linter
       run: luacheck lua/ test/spec/
