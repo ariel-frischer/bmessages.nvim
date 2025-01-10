@@ -81,6 +81,7 @@ local function create_raw_buffer(options)
 	vim.api.nvim_buf_set_name(bufnr, options.buffer_name)
 	vim.api.nvim_set_option_value("buftype", "nofile", { buf = bufnr })
 	vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = bufnr })
+	vim.api.nvim_set_option_value("filetype", "bmessages", { buf = bufnr })
 	vim.api.nvim_set_option_value("bl", false, { buf = bufnr })
 	vim.api.nvim_set_option_value("swapfile", false, { buf = bufnr })
 end
